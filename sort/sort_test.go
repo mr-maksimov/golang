@@ -1,4 +1,4 @@
-package sort_learn
+package sort
 
 import (
 	"math/rand"
@@ -7,22 +7,14 @@ import (
 )
 
 func BenchmarkSort(b *testing.B) {
-	count_arr := 10000
-	var arr []int
-	for i := 0; i < count_arr; i++ {
-		arr = append(arr, rand.Int())
-	}
+	arr := genRandArr(10000)
 	b.StartTimer()
 	Sort(arr)
 	b.StopTimer()
 }
 
 func BenchmarkBasicSort(b *testing.B) {
-	count_arr := 10000
-	var arr []int
-	for i := 0; i < count_arr; i++ {
-		arr = append(arr, rand.Int())
-	}
+	arr := genRandArr(10000)
 	b.StartTimer()
 	sort.Ints(arr)
 	b.StopTimer()
@@ -54,12 +46,12 @@ func TestSort(t *testing.T) {
 		c := c
 		t.Run(c.name, func(t *testing.T) {
 			Sort(c.input)
-			CompareArr(t, c.result, c.input)
+			compareArr(t, c.result, c.input)
 		})
 	}
 }
 
-func CompareArr(t *testing.T, expected, actual []int) {
+func compareArr(t *testing.T, expected, actual []int) {
 	t.Helper()
 	if len(expected) != len(actual) {
 		t.Errorf("У данных массивов разная длина %d против %d",
@@ -72,4 +64,12 @@ func CompareArr(t *testing.T, expected, actual []int) {
 				i, expected[i], actual[i])
 		}
 	}
+}
+
+func genRandArr(countArr int) []int {
+	var arr []int
+	for i := 0; i < countArr; i++ {
+		arr = append(arr, rand.Int())
+	}
+	return arr
 }

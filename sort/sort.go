@@ -1,6 +1,7 @@
-package sort_learn
+package sort
 
-func Sort(arr []int) {
+// Sort сортировка
+func Sort(arr []int) []int {
 	for i := 0; i < len(arr); i++ {
 		for j := i + 1; j < len(arr); j++ {
 			if arr[i] > arr[j] {
@@ -8,4 +9,5 @@ func Sort(arr []int) {
 			}
 		}
 	}
+	return arr
 }
