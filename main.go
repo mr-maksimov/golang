@@ -12,6 +12,7 @@ func main() {
 	connect.ListenServ(sayWeb)
 }
 
+// sayWeb
 func sayWeb(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, `Привет!
 `)
