@@ -1,20 +1,20 @@
 package sort
 
 import (
-	"math/rand"
+	"learning/golang/params"
 	"sort"
 	"testing"
 )
 
 func BenchmarkSort(b *testing.B) {
-	arr := genRandArr(10000)
+	arr := params.Array(10000)
 	b.StartTimer()
 	Sort(arr)
 	b.StopTimer()
 }
 
 func BenchmarkBasicSort(b *testing.B) {
-	arr := genRandArr(10000)
+	arr := params.Array(10000)
 	b.StartTimer()
 	sort.Ints(arr)
 	b.StopTimer()
@@ -64,12 +64,4 @@ func compareArr(t *testing.T, expected, actual []int) {
 				i, expected[i], actual[i])
 		}
 	}
-}
-
-func genRandArr(countArr int) []int {
-	var arr []int
-	for i := 0; i < countArr; i++ {
-		arr = append(arr, rand.Int())
-	}
-	return arr
 }
