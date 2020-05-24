@@ -23,6 +23,7 @@ type Shape interface {
 	perimetr() float64
 }
 
+// totalArea общая площадь фигур
 func totalArea(shapes ...Shape) float64 {
 	var area float64
 	for _, s := range shapes {
