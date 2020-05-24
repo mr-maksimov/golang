@@ -1,1 +1,1 @@
-# golang
+Игры с # golang
